@@ -5,11 +5,13 @@ import {
   FormErrorMessage,
   FormLabel,
   FormControl,
+  Select,
 } from '@chakra-ui/core';
 import { useField } from 'formik';
 
 function InputA({ label, type, controlProps, ...props }) {
   const [field, meta] = useField(props);
+  const InputComponent = type === 'select' ? Select : Input;
   return (
     <FormControl
       width="100%"
@@ -22,7 +24,7 @@ function InputA({ label, type, controlProps, ...props }) {
           {label}
         </FormLabel>
       )}
-      <Input
+      <InputComponent
         aria-label={label || field.name}
         aria-describedby={label || field.name}
         type={type || 'text'}
