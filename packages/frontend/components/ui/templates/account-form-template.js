@@ -9,8 +9,9 @@ function AccountFormTemplate({ form, illustration, children }) {
       justify="center"
       align="center"
       direction={{ base: 'column', lg: 'row' }}
+      width="100%"
     >
-      <Card>
+      <Card width="100%">
         <Box py={8} px={10}>
           {form}
         </Box>
@@ -23,7 +24,7 @@ function AccountFormTemplate({ form, illustration, children }) {
         )}
       </Card>
       {illustration && (
-        <Box w="100%" pl={{ lg: 12, sm: 0 }} mt={{ lg: 0, sm: 4 }}>
+        <Box w="100%" px={{ lg: 240, base: 12 }} mt={{ lg: 0, base: 12 }}>
           {illustration}
         </Box>
       )}
