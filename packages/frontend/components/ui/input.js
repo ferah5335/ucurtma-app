@@ -6,12 +6,15 @@ import {
   FormLabel,
   FormControl,
   Select,
+  Textarea,
 } from '@chakra-ui/core';
 import { useField } from 'formik';
 
 function InputA({ label, type, controlProps, ...props }) {
   const [field, meta] = useField(props);
-  const InputComponent = type === 'select' ? Select : Input;
+  let InputComponent = Input;
+  if (type === 'select') InputComponent = Select;
+  if (type === 'textarea') InputComponent = Textarea;
   return (
     <FormControl
       width="100%"
