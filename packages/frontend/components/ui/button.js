@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@chakra-ui/core';
 
-function ButtonA({ buttonType, fullWidth, children, ...otherProps }) {
+function ButtonA({ buttonType, fullWidth, variant, children, ...otherProps }) {
   const types = {
     primary: { bg: 'primaryButton', fontWeight: 'regular', size: 'lg' },
   };
@@ -10,9 +10,10 @@ function ButtonA({ buttonType, fullWidth, children, ...otherProps }) {
     <Button
       data-testid="button"
       width={fullWidth ? '100%' : 'inherit'}
-      bg={types[buttonType].bg}
-      fontWeight={types[buttonType].fontWeight}
-      size={types[buttonType].size}
+      bg={buttonType !== 'custom' && types[buttonType].bg}
+      fontWeight={buttonType !== 'custom' && types[buttonType].fontWeight}
+      size={buttonType !== 'custom' && types[buttonType].size}
+      variant={variant}
       {...otherProps}
     >
       {children}
@@ -26,9 +27,10 @@ ButtonA.defaultProps = {
 };
 
 ButtonA.propTypes = {
-  buttonType: PropTypes.oneOf(['primary']),
+  buttonType: PropTypes.oneOf(['primary', 'custom']),
   fullWidth: PropTypes.bool,
   children: PropTypes.node,
+  variant: PropTypes.string,
 };
 
 export default ButtonA;
